@@ -29,6 +29,9 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    //google cloud translate
+    implementation 'com.google.cloud:google-cloud-translate:2.47.0'
 }
 
 tasks.named('test') {

@@ -1,1 +1,3 @@
-spring.application.name=translation
+google-translate:
+  key : ${TRANSLATE_KEY}
+  address: https://translation.googleapis.com/language/translate/v2
