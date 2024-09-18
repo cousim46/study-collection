@@ -9,10 +9,10 @@ import rabbitmq.sender.message.SendMessage;
 @RequiredArgsConstructor
 public class FanoutExchangeService {
     private final RabbitTemplate rabbitTemplate;
-    private final String DIRECT_EXCHANGE_NAME = "fanout_exchange";
+    private final String FANOUT_EXCHANGE_NAME = "fanout_exchange";
     public void send() {
         SendMessage sendMessage = new SendMessage("https://hoestory.tistory.com/", "hoestory",
             "RabbitMQ");
-        rabbitTemplate.convertAndSend(DIRECT_EXCHANGE_NAME,null, sendMessage);
+        rabbitTemplate.convertAndSend(FANOUT_EXCHANGE_NAME,null, sendMessage);
     }
 }
