@@ -9,6 +9,6 @@ public class DirectListener {
 
     @RabbitListener(queues = "direct_queue")
     public void getMessage(SendMessage sendMessage) {
-        System.out.println("sendMessage = " + sendMessage);
+        System.out.println(sendMessage);
     }
 }
