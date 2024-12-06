@@ -1,4 +1,6 @@
 spring:
+  messages:
+    fallback-to-system-locale: true
   jpa:
     properties:
       hibernate:
