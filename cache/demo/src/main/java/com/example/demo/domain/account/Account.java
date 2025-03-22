@@ -18,6 +18,7 @@ public class Account {
     private Long Id;
 
     private String name;
+    private String email;
     private int age;
 
 }
