@@ -5,6 +5,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import study.lock.common.Counter;
+import study.lock.spin.java.JavaSpinLock;
 
 class JavaSpinLockTest {
 

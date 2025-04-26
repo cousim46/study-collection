@@ -1,9 +1,11 @@
-package study.lock.java.spin;
+package study.lock.spin.java;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import study.lock.spin.SpinLock;
+import study.lock.common.Counter;
 
-public class JavaSpinLock {
+public class JavaSpinLock implements SpinLock {
 
     private Lock lock = new ReentrantLock();
 
