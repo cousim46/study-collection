@@ -1,4 +1,4 @@
-package study.lock.java.spin;
+package study.lock.common;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
