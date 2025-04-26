@@ -6,6 +6,7 @@ import java.util.concurrent.Executors;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import study.lock.common.Counter;
+import study.lock.spin.SpinLock;
 import study.lock.spin.java.JavaSpinLock;
 
 class JavaSpinLockTest {
@@ -16,7 +17,7 @@ class JavaSpinLockTest {
         ExecutorService executorService = Executors.newFixedThreadPool(threadCount);
         Counter counter = new Counter();
         CountDownLatch doneSignal = new CountDownLatch(threadCount);
-        JavaSpinLock spinLock = new JavaSpinLock();
+        SpinLock spinLock = new JavaSpinLock();
         for (int i = 0; i < threadCount; i++) {
             executorService.execute(() -> {
                 spinLock.executeSpinLock(counter);
