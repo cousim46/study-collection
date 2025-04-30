@@ -3,3 +3,11 @@ spring:
     redis:
       host: localhost
       port: 6379
+  datasource:
+    url: jdbc:mysql://localhost:3308/test
+    username: test
+    password: test
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
