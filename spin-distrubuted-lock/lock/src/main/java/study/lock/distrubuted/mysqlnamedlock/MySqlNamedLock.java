@@ -1,4 +1,4 @@
-package study.lock.distrubuted;
+package study.lock.distrubuted.mysqlnamedlock;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
