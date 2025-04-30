@@ -1,5 +1,9 @@
 package study.lock.config;
 
+import io.lettuce.core.RedisClient;
+import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
+import org.redisson.config.Config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +21,7 @@ public class RedisConfig {
     private String host;
     @Value("${spring.data.redis.port}")
     private int port;
+    private final String REDSISSON_PREFIX = "redis://";
 
     @Bean
     public LettuceConnectionFactory lettuceConnectionFactory() {
@@ -33,5 +38,12 @@ public class RedisConfig {
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setValueSerializer(new StringRedisSerializer());
         return redisTemplate;
+    }
+
+    @Bean
+    public RedissonClient redissonClient() {
+        Config config = new Config();
+        config.useSingleServer().setAddress(String.format("%s%s:%d", REDSISSON_PREFIX, host, port));
+        return Redisson.create(config);
     }
 }
