@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3308/namedlock
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
