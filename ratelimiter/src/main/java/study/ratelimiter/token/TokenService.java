@@ -35,6 +35,7 @@ public class TokenService {
             tokenRateLimiter.put("capacity", CAPACITY);
             redisTemplate.opsForHash().putAll(key, tokenRateLimiter);
         } else {
+            //동시성 이슈가 발생할 수 있으니 락 활용해야함.
             Integer token = (Integer) tokenValue;
             Integer lastTokenUpdate = (Integer) redisTemplate.opsForHash()
                 .get(key, "lastTokenUpdate");
