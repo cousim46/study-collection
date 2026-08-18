@@ -95,12 +95,15 @@ Outbox Pattern에 필요한 테이블 컬럼은 아래와 같습니다.
 
 ### Polling Publisher
 
-Polling Publisher 방식은 메시지 발행이 되지 않아 Outbox에서 해당 이벤트에 대한 메시지 상태값이 `READY`인 값을 스케줄링을 통해서 주기적으로 조회하여 메시지를 재발행하는 방식입니다.<br/>
-Spring에서는 `@Scheduled`를 이용하여 구현할 수 있으며, 동작 흐름은 아래와 같습니다.
+Polling Publisher 방식은 Outbox 테이블에 저장된 이벤트 중 아직 메시지가 발행되지 않은 이벤트를 주기적으로 조회하여 메시지 브로커에 발행하는 방식입니다.
 
-1. `@Scheduled`로 주기적으로 Outbox 테이블에서 `READY` 상태의 메시지를 조회합니다.
-2. 조회된 메시지를 메시지 브로커에 발행합니다.
-3. 발행 성공 시 status를 `PUBLISHED`로 업데이트합니다.
+Spring에서는 @Scheduled를 이용하여 주기적으로 Outbox 테이블을 조회하도록 구현할 수 있습니다.
+
+동작 흐름은 다음과 같습니다.
+
+1. @Scheduled를 이용하여 주기적으로 Outbox 테이블에서 READY 상태의 이벤트를 조회합니다.
+2. 조회된 이벤트를 Kafka나 RabbitMQ와 같은 메시지 브로커에 발행합니다.
+3. 메시지 발행이 성공하면 해당 Outbox 데이터의 status를 PUBLISHED로 변경합니다.
 
 #### 주의점
 
